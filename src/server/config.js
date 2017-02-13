@@ -10,8 +10,8 @@ const logger = console;
 
 export function addJsonLoaderIfNotAvailable(config) {
   const jsonLoaderExists = config.module.rules.reduce(
-    (value, loader) => {
-      return value || [].concat(loader.test).some((matcher) => {
+    (value, rule) => {
+      return value || [].concat(rule.test).some((matcher) => {
         const isRegex = matcher instanceof RegExp;
         const testString = 'my_package.json';
         if (isRegex) {
